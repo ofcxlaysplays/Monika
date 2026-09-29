@@ -1,6 +1,5 @@
 # monika.spec
 from kivy_deps import sdl2, glew
-from PyInstaller.utils.hooks import collect_submodules
 
 block_cipher = None
 
@@ -9,7 +8,8 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[],
-    hiddenimports=collect_submodules('kivy'),
+    # <-- removed collect_submodules('kivy'), this is what was crashing
+    hiddenimports=[],
     hookspath=[],
     runtime_hooks=[],
     excludes=[],
@@ -27,15 +27,14 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='MonikaPrank',
+    name='cooll',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False, # Set to True if you want a console for debugging
+    console=False,
 )
 
-# THIS IS THE CRITICAL PART FOR KIVY
 coll = COLLECT(
     exe,
     a.binaries,

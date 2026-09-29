@@ -4,7 +4,7 @@ from kivy_deps import sdl2, glew
 block_cipher = None
 
 a = Analysis(
-    ['monika.py'],
+    ['cool.py'],
     pathex=[],
     binaries=[],
     datas=[],
